@@ -13,15 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
 Auth::routes();
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function () {
     Route::prefix('backend')->group(function () {
-        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::resource('jenis-barang', App\Http\Controllers\Backend\JenisbarangController::class);
         Route::resource('barang', App\Http\Controllers\Backend\BarangController::class);
         Route::resource('order', App\Http\Controllers\Backend\OrderController::class);

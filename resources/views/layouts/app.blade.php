@@ -38,16 +38,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/backend/home') }}">Dashboard</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/backend/jenis-barang') }}">Kategori Barang</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/backend/barang') }}">Barang</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/backend/order') }}">Pemesanan</a>
+                            </li>
                         @endauth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/backend/jenis-barang') }}">Kategori Barang</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/backend/barang') }}">Barang</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/backend/order') }}">Pemesanan</a>
-                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
