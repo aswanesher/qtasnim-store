@@ -34,6 +34,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/backend/home') }}">Dashboard</a>
+                            </li>
+                        @endauth
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/backend/jenis-barang') }}">Kategori Barang</a>
                         </li>
@@ -89,6 +94,7 @@
             @yield('content')
         </main>
     </div>
+    <script src="http://pesat.test/pesat/js/jquery-3.5.0.min.js"></script>
     @stack('scripts')
 </body>
 

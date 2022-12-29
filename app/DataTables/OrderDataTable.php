@@ -34,7 +34,14 @@ class OrderDataTable extends DataTable
      */
     public function query(Order $model): QueryBuilder
     {
-        return $model->with('barang', 'barang.jenisbarang')->newQuery();
+        $start_date = $this->request->get('start_date');
+        $end_date = $this->request->get('end_date');
+
+        return $model->with('barang', 'barang.jenisbarang')->when($start_date, function ($query) use ($start_date) {
+            return $query->whereDate('order_date', '>=', $start_date);
+        })->when($end_date, function ($query) use ($end_date) {
+            return $query->whereDate('order_date', '<=', $end_date);
+        })->newQuery();
     }
 
     /**
