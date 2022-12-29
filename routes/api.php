@@ -22,6 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('jenisbarang', JenisBarangController::class);
+Route::apiResource('jenis-barang', JenisBarangController::class);
 Route::apiResource('barang', BarangController::class);
 Route::apiResource('order', OrderController::class);
