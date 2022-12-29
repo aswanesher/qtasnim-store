@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Api\JenisBarangController;
+use App\Http\Controllers\Api\BarangController;
+use App\Http\Controllers\Api\OrderController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('jenisbarang', JenisBarangController::class);
+Route::apiResource('barang', BarangController::class);
+Route::apiResource('order', OrderController::class);
