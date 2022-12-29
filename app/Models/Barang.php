@@ -9,6 +9,8 @@ class Barang extends Model
 {
     use HasFactory;
 
+    public $fillable = ['jenis_barang', 'stok', 'name'];
+
     /**
      * Get the jenisbarang that owns the Barang
      *

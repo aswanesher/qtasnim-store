@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\JenisBarangRequest;
 use Illuminate\Http\Request;
 
 use App\Models\JenisBarang;
@@ -39,7 +40,8 @@ class JenisBarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $jenisbarang = JenisBarang::create($request->all());
+        return new JenisBarangResource($jenisbarang);
     }
 
     /**
@@ -73,7 +75,11 @@ class JenisBarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $jenisBarang = JenisBarang::find($id);
+        $jenisBarang->name = $request->name;
+        $jenisBarang->save();
+
+        return new JenisBarangResource($jenisBarang);
     }
 
     /**
@@ -84,6 +90,9 @@ class JenisBarangController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jenisBarang = JenisBarang::find($id);
+        $jenisBarang->delete();
+
+        return response('Jenis Barang dihapus', 204);
     }
 }

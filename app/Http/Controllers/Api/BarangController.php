@@ -39,7 +39,8 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $barang = Barang::create($request->except('_token'));
+        return new BarangResource($barang);
     }
 
     /**
@@ -73,7 +74,11 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $barang = Barang::find($id);
+        $barang->name = $request->name;
+        $barang->save();
+
+        return new BarangResource($barang);
     }
 
     /**
@@ -84,6 +89,9 @@ class BarangController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $barang = Barang::find($id);
+        $barang->delete();
+
+        return response('Barang dihapus', 204);
     }
 }
